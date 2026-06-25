@@ -1,0 +1,193 @@
+
+/* =========================
+   DESIGN TOKENS
+========================= */
+:root {
+  --bg: #f4f4f9;
+  --card: #ffffff;
+  --text: #333;
+  --muted: #555;
+
+  --heading: #2c3e50;
+  --accent: #3498db;
+
+  --radius: 14px;
+  --shadow: 0 10px 25px rgba(0,0,0,0.08);
+  --transition: 0.3s ease;
+}
+
+/* Dark Mode Support */
+[data-theme="dark"] {
+  --bg: #0f0f1a;
+  --card: #1a1a2b;
+  --text: #eaeaea;
+  --muted: #b5b5b5;
+  --heading: #ffffff;
+  --accent: #60a5fa;
+  --shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
+/* =========================
+   BASE RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* =========================
+   ABOUT SECTION LAYOUT
+========================= */
+.about-section {
+  max-width: 1100px;
+  margin: 4rem auto;
+  padding: 3rem 2rem;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: background var(--transition), color var(--transition);
+}
+
+/* Flex container upgraded */
+.about-container {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+/* =========================
+   CONTENT AREA
+========================= */
+.about-content {
+  flex: 2;
+}
+
+.about-content h1 {
+  font-size: 2.5rem;
+  color: var(--heading);
+  margin-bottom: 1.2rem;
+  display: inline-block;
+  position: relative;
+}
+
+.about-content h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 60%;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.about-content h2 {
+  font-size: 1.6rem;
+  color: var(--heading);
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+.about-content p {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  color: var(--muted);
+}
+
+/* =========================
+   LIST STYLING
+========================= */
+.about-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.about-content ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--muted);
+  transition: color var(--transition), transform var(--transition);
+}
+
+/* Custom bullet */
+.about-content ul li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.about-content ul li:hover {
+  color: var(--accent);
+  transform: translateX(5px);
+}
+
+/* =========================
+   IMAGE (if present)
+========================= */
+.about-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 280px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform var(--transition);
+}
+
+.about-image img:hover {
+  transform: scale(1.03);
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 900px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .about-content h1::after {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+  }
+
+  .about-content {
+    text-align: center;
+  }
+
+  .about-content ul li {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .about-section {
+    padding: 2rem 1.2rem;
+  }
+
+  .about-content h1 {
+    font-size: 2rem;
+  }
+
+  .about-content h2 {
+    font-size: 1.3rem;
+  }
+}
